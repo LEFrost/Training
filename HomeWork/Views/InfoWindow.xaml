@@ -1,0 +1,50 @@
+﻿<Window x:Class="HomeWork.Views.InfoWindow"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork.Views"
+        mc:Ignorable="d"
+        xmlns:viewmodel="clr-namespace:HomeWork.ViewModels"
+        xmlns:Controls="clr-namespace:LabelTextBox;assembly=LabelTextBox"
+        ResizeMode="CanMinimize"
+        xmlns:convert="clr-namespace:HomeWork.Converts"
+        Title="{Binding ElementName=window,Path=TitleString}" Height="400" Width="400">
+ 
+    <Window.Resources>
+        <Style TargetType="Controls:LabelTextBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!--Horizontal="Vertical" Width="200" Height="40"-->
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <convert:HeaderPhotoConvert x:Key="HeaderPhotoConvert"/>
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Margin="5">
+            <!--<StackPanel.DataContext>
+                <viewmodel:InfoViewModel/>
+            </StackPanel.DataContext>-->
+            <Controls:LabelTextBox Label="姓名" Text="{Binding ElementName=window,Path=ViewModel.Name,Mode=TwoWay}" LabelPosition="Top" Width="200"/>
+            <Controls:LabelTextBox Name="Id" Label="教师编号" Text="{Binding ElementName=window,Path=ViewModel.ID,Mode=TwoWay}" LabelPosition="Top" Width="200"/>
+            <Controls:LabelTextBox Label="所属学院" Text="{Binding ElementName=window,Path=ViewModel.College,Mode=TwoWay}" LabelPosition="Top" Width="200"/>
+            <Controls:LabelTextBox Name="Facutly" Label="所属教研室" Text="{Binding ElementName=window,Path=ViewModel.Facutly}" LabelPosition="Top" Width="200"/>
+            <Controls:LabelTextBox Label="电子邮箱" Text="{Binding ElementName=window,Path=ViewModel.Email}" LabelPosition="Top" Width="200"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right">
+            <Image Source="{Binding ElementName=window,Path=ViewModel.Photo,Mode=TwoWay}" Stretch="Fill" Width="150" Height="150"/>
+            <!--<Button Name="ModifyPictrue" Content="修改个人照片" Click="ModifyPictrue_Click"/>-->
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <!--<Button Name="ModifyEmail" Content="修改个人邮箱" Click="ModifyEmail_Click"/>-->
+            <Button Name="Back" Content="返回上级菜单" Click="Back_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

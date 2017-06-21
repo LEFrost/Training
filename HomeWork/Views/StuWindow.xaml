@@ -1,0 +1,83 @@
+﻿<Window x:Class="HomeWork.Views.StuWindow"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork.Views"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        xmlns:convert="clr-namespace:HomeWork.Converts"
+        xmlns:viewmodel="clr-namespace:HomeWork.ViewModels"
+        Title="StuWindow" Height="600" Width="700">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <convert:RecordStatusConvert x:Key="RecordStatusConvert"/>
+    </Window.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.8*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Name="TeacherHeader" Grid.Row="0" Source="{Binding ElementName=window,Path=ViewModel.Photo}" Stretch="Fill" ></Image>
+                    <TextBlock Name="TeacherId" Grid.Row="1" Text="{Binding ElementName=window,Path=ViewModel.Name}" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" Margin="0,5">
+                <StackPanel Margin="10,5">
+                    <Button Name="ShowInfo" Content="查看个人信息" Click="ShowInfo_Click"/>
+                    <Button Name="ModifyInfo" Content="修改个人信息" Click="ModifyInfo_Click"/>
+                    <Button Name="ModifyPassword" Content="修改个人密码" Click="ModifyPassword_Click"/>
+                    <Button Name="ShowTeacher" Content="查看教师信息" Click="ShowTeacher_Click" />
+                    <Button Name="ShowClass" Content="查看课程信息" Click="ShowClass_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Border Margin="5,0">
+                <StackPanel Margin="5">
+                    <TextBlock Text="请输入要查询考勤记录的课程编号"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Name="CourseId" Height="20" Width="200"/>
+                        <Button Name="Find" Content="查询" Margin="5" Width="40" Height="25" Click="Find_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" Margin="5,5,5,0">
+                <DataGrid ItemsSource="{Binding ElementName=window,Path=ViewModel.StudentResultList}" AutoGenerateColumns="False">
+                    <DataGrid.DataContext>
+                        <viewmodel:ResultModel/>
+                    </DataGrid.DataContext>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ClassName}" Width="80" Header="课程"/>
+                        <DataGridTextColumn Binding="{Binding StuName}" Width="80" Header="姓名"/>
+                        <DataGridTextColumn Binding="{Binding Time}" Width="200" Header="时间"/>
+                        <DataGridTextColumn Binding="{Binding Status,Converter={StaticResource RecordStatusConvert}}" Header="考勤"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

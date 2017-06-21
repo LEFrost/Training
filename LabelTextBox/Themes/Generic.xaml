@@ -1,0 +1,8 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LabelTextBox">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/LabelTextBox;component/themes/LabelTextBox.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="HomeWork.Views.ShowTeacherInfo"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork.Views"
+        mc:Ignorable="d"
+        ResizeMode="CanResize"
+        xmlns:viewmodel="clr-namespace:HomeWork.ViewModels"
+        xmlns:models="clr-namespace:HomeWork.Models"
+        Title="ShowTeacherInfo" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding ElementName=window,Path=ViewModel.ResultTeaList}" AutoGenerateColumns="False">
+            <DataGrid.DataContext>
+                <viewmodel:TeacherMsg/>
+            </DataGrid.DataContext>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="姓名" Binding="{Binding Name}" Width="120"/>
+                <DataGridTextColumn Header="课程" Binding="{Binding Course}" Width="120"/>
+                <DataGridTextColumn Header="所属学院" Binding="{Binding College}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="Back" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Content="返回上级菜单" Click="Back_Click"/>
+    </Grid>
+</Window>
