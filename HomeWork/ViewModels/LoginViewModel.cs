@@ -11,7 +11,10 @@ namespace HomeWork.ViewModels
     {
         public bool Login(teacherinfo teacher)
         {
-            var query = DBContext.teacherinfo.FirstOrDefault(x => x.teacher_id == teacher.teacher_id&&x.teacher_pwd==teacher.teacher_pwd);
+            var query = from q in DBContext.teacherinfo
+                        where q.teacher_id == teacher.teacher_id && q.teacher_pwd == teacher.teacher_pwd
+                        select q;
+                /*DBContext.teacherinfo.FirstOrDefault(x => x.teacher_id == teacher.teacher_id&&x.teacher_pwd==teacher.teacher_pwd);*/
             if (query != null)
                 return true;
             else

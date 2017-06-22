@@ -13,13 +13,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// TeacherLogin.xaml 的交互逻辑
     /// </summary>
-    public partial class TeacherLogin : Window
+    public partial class TeacherLogin
     {
         public TeacherLogin()
         {
@@ -28,6 +29,8 @@ namespace HomeWork.Views
         private LoginViewModel _ViewModel;
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            App.IsStu = false;
+
             _ViewModel = new LoginViewModel();
             teacherinfo teacher = new teacherinfo()
             {
@@ -37,8 +40,9 @@ namespace HomeWork.Views
             if (_ViewModel.Login(teacher))
             {
                 App.ID = UserName.Text;
-                App.IsAdmin = IsAdmin.IsChecked.HasValue;
+                //App.IsAdmin = IsAdmin.IsChecked.HasValue;
                 TeacherWindow window = new TeacherWindow();
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 window.Show();
                 this.Close();
             }
@@ -52,7 +56,7 @@ namespace HomeWork.Views
         {
             UserName.Text =
                 Password.Password = "";
-            IsAdmin.IsChecked = false;
+            //IsAdmin.IsChecked = false;
         }
     }
 }

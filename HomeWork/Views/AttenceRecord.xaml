@@ -1,4 +1,4 @@
-﻿<Window x:Class="HomeWork.Views.AttenceRecord"
+﻿<controls:MetroWindow x:Class="HomeWork.Views.AttenceRecord"
         x:Name="window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,12 +7,13 @@
         xmlns:local="clr-namespace:HomeWork.Views"
         xmlns:Controls="clr-namespace:LabelTextBox;assembly=LabelTextBox"
         mc:Ignorable="d"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:convert="clr-namespace:HomeWork.Converts"
         xmlns:models="clr-namespace:HomeWork.Models"
         ResizeMode="CanMinimize"
         Title="AttenceRecord" Height="500" Width="350">
     <Window.Resources>
-        <Style TargetType="Control" x:Key="ContentStyle">
+        <!--<Style TargetType="Control" x:Key="ContentStyle">
             <Setter Property="Width" Value="200"/>
             <Setter Property="Height" Value="25"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -23,7 +24,7 @@
         <Style TargetType="TextBlock" x:Key="LabelStyle">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
+        </Style>-->
         <convert:RecordStatusConvert x:Key="RecordStatusConvert"/>
     </Window.Resources>
     <Grid>
@@ -46,13 +47,14 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="教学班号:" Grid.Column="0" Grid.Row="0" Style="{StaticResource LabelStyle}"/>
-            <TextBlock Text="课程名称:" Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelStyle}"/>
-            <TextBlock Text="学生 ID:" Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelStyle}"/>
-            <TextBlock Text="学生姓名:" Grid.Column="0" Grid.Row="3" Style="{StaticResource LabelStyle}"/>
-            <TextBlock Text="考勤时间:" Grid.Column="0" Grid.Row="4" Style="{StaticResource LabelStyle}"/>
-            <TextBlock Text="考勤记录:" Grid.Column="0" Grid.Row="5" Style="{StaticResource LabelStyle}"/>
-            <ComboBox Name="ClassNum" Grid.Column="1" SelectionChanged="ClassNum_SelectionChanged" Grid.Row="0" ItemsSource="{Binding ElementName=window,Path=ViewModel.ClassNumList}" Style="{StaticResource ContentStyle}">
+            <TextBlock Text="教学班号:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="课程名称:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="学生 ID:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="学生姓名:" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="考勤时间:" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="考勤记录:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <ComboBox Name="ClassNum" Grid.Column="1" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                      SelectionChanged="ClassNum_SelectionChanged" Grid.Row="0" ItemsSource="{Binding ElementName=window,Path=ViewModel.ClassNumList}"  >
                 <ComboBox.DataContext>
                     <models:classinfo/>
                 </ComboBox.DataContext>
@@ -62,8 +64,10 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBox Name="ClassName" Grid.Row="1"  Style="{StaticResource ContentStyle}" IsReadOnly="False"/>
-            <ComboBox Name="StuID" Grid.Row="2" SelectionChanged="StuID_SelectionChanged" ItemsSource="{Binding ElementName=window,Path=ViewModel.StudentList}" Style="{StaticResource ContentStyle}">
+            <TextBox Name="ClassName"  Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                     Grid.Row="1"  Grid.Column="1"  IsReadOnly="False"/>
+            <ComboBox Name="StuID"  Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                      Grid.Row="2" Grid.Column="1" SelectionChanged="StuID_SelectionChanged" ItemsSource="{Binding ElementName=window,Path=ViewModel.StudentList}"  >
                 <ComboBox.DataContext>
                     <models:studentinfo></models:studentinfo>
                 </ComboBox.DataContext>
@@ -73,9 +77,12 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBox Name="StuName" Grid.Row="3" Style="{StaticResource ContentStyle}" IsReadOnly="True"/>
-            <TextBox Name="RecordTime" Grid.Row="4" Style="{StaticResource ContentStyle}" IsReadOnly="True"/>
-            <ComboBox Name="RecordStatu" Grid.Row="5" ItemsSource="{Binding ElementName=window,Path=ViewModel.AttenceList}" Style="{StaticResource ContentStyle}">
+            <TextBox Name="StuName" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                     Grid.Row="3" Grid.Column="1"  IsReadOnly="True"/>
+            <TextBox Name="RecordTime" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                     Grid.Row="4"  Grid.Column="1" IsReadOnly="True"/>
+            <ComboBox Name="RecordStatu" Grid.Column="1" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                      Grid.Row="5" ItemsSource="{Binding ElementName=window,Path=ViewModel.AttenceList}"  >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding  Converter={StaticResource RecordStatusConvert}}"/>
@@ -84,15 +91,15 @@
             </ComboBox>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <StackPanel.Resources>
+            <!--<StackPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Width" Value="100"/>
                     <Setter Property="Height" Value="30"/>
                     <Setter Property="Margin" Value="5"/>
                 </Style>
-            </StackPanel.Resources>
-            <Button Name="Record" Content="录入考勤系统" Click="Record_Click"/>
-            <Button Name="Back" Content="返回上级菜单"/>
+            </StackPanel.Resources>-->
+            <Button Name="Record" Content="录入考勤系统" Width="100" Height="30" Margin="5" Click="Record_Click"/>
+            <Button Name="Back" Content="返回上级菜单"  Width="100" Height="30" Margin="5" Click="Back_Click"/>
         </StackPanel>
     </Grid>
-</Window>
+</controls:MetroWindow>

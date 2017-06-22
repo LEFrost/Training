@@ -14,13 +14,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// InfoWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class InfoWindow : Window
+    public partial class InfoWindow
     {
         private InfoViewModel _ViewModel;
         public InfoViewModel ViewModel

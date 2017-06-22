@@ -12,13 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// ShowTeacherInfo.xaml 的交互逻辑
     /// </summary>
-    public partial class ShowTeacherInfo : Window
+    public partial class ShowTeacherInfo
     {
         private ShowPeopleInfoViewModel _ViewModel;
         public ShowPeopleInfoViewModel ViewModel { get => _ViewModel??(_ViewModel=new ShowPeopleInfoViewModel()); set => _ViewModel = value; }

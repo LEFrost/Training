@@ -1,4 +1,5 @@
 ﻿using HomeWork.ViewModels;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace HomeWork.Views
     /// <summary>
     /// TeacherWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class TeacherWindow : Window
+    public partial class TeacherWindow
     {
         private MainViewModel _ViewModel;
         public MainViewModel ViewModel
@@ -44,17 +45,21 @@ namespace HomeWork.Views
             InfoWindow window = new InfoWindow("教师信息");
             window.Show();
         }
+        private void ShowWindow(Window window)
+        {
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.Show();
 
+        }
         private void ModifyPassword_Click(object sender, RoutedEventArgs e)
         {
-            HomeWork.Views.ModifyPassword window = new Views.ModifyPassword();
-            window.Show();
+            ShowWindow(new Views.ModifyPassword());
         }
 
         private void ModifyInfo_Click(object sender, RoutedEventArgs e)
         {
             ModifyInfo window = new Views.ModifyInfo();
-
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             if (window.ShowDialog().HasValue)
             {
                 ViewModel.GetInfo();
@@ -63,22 +68,23 @@ namespace HomeWork.Views
 
         private void ShowStuInfo_Click(object sender, RoutedEventArgs e)
         {
-            new ShowStuInfo().Show();
+            ShowWindow(  new ShowStuInfo());
         }
 
         private void RecordInfo_Click(object sender, RoutedEventArgs e)
         {
-            new AttenceRecord().Show();
+            ShowWindow(new AttenceRecord());
         }
 
         private void ShowRecord_Click(object sender, RoutedEventArgs e)
         {
-            new StuAttenceInfo().Show();
+            //ShowWindow(new StuAttenceInfo());
+            new StuLogin().Show();
         }
 
         private void ModifyRecord_Click(object sender, RoutedEventArgs e)
         {
-            new ModifyRecord().Show();
+            ShowWindow( new ModifyRecord());
         }
 
         private void Find_Click(object sender, RoutedEventArgs e)

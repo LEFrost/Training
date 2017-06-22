@@ -1,4 +1,4 @@
-﻿<Window x:Class="HomeWork.Views.ModifyRecord"
+﻿<controls:MetroWindow x:Class="HomeWork.Views.ModifyRecord"
         x:Name="window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:HomeWork.Views"
         xmlns:viewmodel="clr-namespace:HomeWork.ViewModels"
         mc:Ignorable="d"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:convert="clr-namespace:HomeWork.Converts"
         Title="ModifyRecord" MinHeight="500" MinWidth="600">
     <Window.Resources>
@@ -50,15 +51,15 @@
         </DataGrid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Grid.Row="1" Margin="0,10">
-            <StackPanel.Resources>
+            <!--<StackPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Height" Value="30"/>
                     <Setter Property="Width" Value="80"/>
                     <Setter Property="Margin" Value="5,0"/>
                 </Style>
-            </StackPanel.Resources>
-            <Button Name="CommitRecord" Content="提交考勤记录" Click="CommitRecord_Click"/>
-            <Button Name="Back" Content="返回上级菜单" Click="Back_Click"/>
+            </StackPanel.Resources>-->
+            <Button Name="CommitRecord"  Width="80" Height="30" Margin="5,0"  Content="提交考勤记录" Click="CommitRecord_Click"/>
+            <Button Name="Back"  Width="80" Height="30" Margin="5,0"   Content="返回上级菜单" Click="Back_Click"/>
         </StackPanel>
     </Grid>
-</Window>
+</controls:MetroWindow>

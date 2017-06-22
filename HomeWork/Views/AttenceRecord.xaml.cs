@@ -13,13 +13,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// AttenceRecord.xaml 的交互逻辑
     /// </summary>
-    public partial class AttenceRecord : Window
+    public partial class AttenceRecord
     {
         private AddAttenceRecordViewModel _ViewModel;
         Timer timer = new Timer();
@@ -59,7 +60,7 @@ namespace HomeWork.Views
         private void Record_Click(object sender, RoutedEventArgs e)
         {
             string classId, stuId, status;
-            if (ClassNum.SelectedIndex < 0 && StuID.SelectedIndex < 0 && RecordStatu.SelectedIndex < 0)
+            if (ClassNum.SelectedIndex < 0 || StuID.SelectedIndex < 0 || RecordStatu.SelectedIndex < 0)
                 MessageBox.Show("请选择所有信息", "错误");
             else
             {
@@ -75,6 +76,11 @@ namespace HomeWork.Views
                     MessageBox.Show("添加失败", "错误");
                 }
             }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -13,13 +13,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// ModifyInfo.xaml 的交互逻辑
     /// </summary>
-    public partial class ModifyInfo : Window
+    public partial class ModifyInfo
     {
         private ModifyInfoViewModel _ViewModel;
         public ModifyInfoViewModel ViewModel

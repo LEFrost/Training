@@ -1,4 +1,4 @@
-﻿<Window x:Class="HomeWork.Views.StuWindow"
+﻿<controls:MetroWindow x:Class="HomeWork.Views.StuWindow"
         x:Name="window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,15 +6,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork.Views"
         mc:Ignorable="d"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         ResizeMode="CanMinimize"
         xmlns:convert="clr-namespace:HomeWork.Converts"
         xmlns:viewmodel="clr-namespace:HomeWork.ViewModels"
         Title="StuWindow" Height="600" Width="700">
     <Window.Resources>
-        <Style TargetType="Button">
+        <!--<Style TargetType="Button">
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="0,5,0,0"/>
-        </Style>
+        </Style>-->
         <Style TargetType="Border">
             <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -43,11 +44,11 @@
             </Border>
             <Border Grid.Row="1" Margin="0,5">
                 <StackPanel Margin="10,5">
-                    <Button Name="ShowInfo" Content="查看个人信息" Click="ShowInfo_Click"/>
-                    <Button Name="ModifyInfo" Content="修改个人信息" Click="ModifyInfo_Click"/>
-                    <Button Name="ModifyPassword" Content="修改个人密码" Click="ModifyPassword_Click"/>
-                    <Button Name="ShowTeacher" Content="查看教师信息" Click="ShowTeacher_Click" />
-                    <Button Name="ShowClass" Content="查看课程信息" Click="ShowClass_Click"/>
+                    <Button Name="ShowInfo" Height="30" Margin="0,5,0,0" Content="查看个人信息" Click="ShowInfo_Click"/>
+                    <Button Name="ModifyInfo" Height="30" Margin="0,5,0,0" Content="修改个人信息" Click="ModifyInfo_Click"/>
+                    <Button Name="ModifyPassword" Height="30" Margin="0,5,0,0" Content="修改个人密码" Click="ModifyPassword_Click"/>
+                    <Button Name="ShowTeacher" Height="30" Margin="0,5,0,0" Content="查看教师信息" Click="ShowTeacher_Click" />
+                    <Button Name="ShowClass" Height="30" Margin="0,5,0,0" Content="查看课程信息" Click="ShowClass_Click"/>
                 </StackPanel>
             </Border>
         </Grid>
@@ -80,4 +81,4 @@
             </Border>
         </Grid>
     </Grid>
-</Window>
+</controls:MetroWindow>

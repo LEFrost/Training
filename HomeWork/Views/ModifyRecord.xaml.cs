@@ -19,7 +19,7 @@ namespace HomeWork.Views
     /// <summary>
     /// ModifyRecord.xaml 的交互逻辑
     /// </summary>
-    public partial class ModifyRecord : Window
+    public partial class ModifyRecord
     {
 
         private ModifyRecordViewModel _ViewModel;

@@ -18,7 +18,7 @@ namespace HomeWork.Views
     /// <summary>
     /// StuWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class StuWindow : Window
+    public partial class StuWindow
     {
         private MainViewModel _ViewModel;
         public MainViewModel ViewModel { get => _ViewModel ?? (_ViewModel = new MainViewModel()); set => _ViewModel = value; }
@@ -28,20 +28,26 @@ namespace HomeWork.Views
             InitializeComponent();
             ViewModel.GetInfo();
         }
+        private void ShowWindow(Window window)
+        {
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.Show();
 
+        }
         private void ShowInfo_Click(object sender, RoutedEventArgs e)
         {
-            new InfoWindow("学生个人信息").Show();
+            ShowWindow(new InfoWindow("学生个人信息"));
         }
 
         private void ModifyPassword_Click(object sender, RoutedEventArgs e)
         {
-            new ModifyPassword().Show();
+            ShowWindow(new ModifyPassword());
         }
 
         private void ModifyInfo_Click(object sender, RoutedEventArgs e)
         {
             ModifyInfo window = new ModifyInfo();
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             if (window.ShowDialog().HasValue)
             {
                 ViewModel.GetInfo();
@@ -64,12 +70,16 @@ namespace HomeWork.Views
 
         private void ShowTeacher_Click(object sender, RoutedEventArgs e)
         {
-            new ShowTeacherInfo().ShowDialog();
+            ShowTeacherInfo window = new ShowTeacherInfo();
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.ShowDialog();
         }
 
         private void ShowClass_Click(object sender, RoutedEventArgs e)
         {
-            new ShowCourseInfo().ShowDialog();
+            ShowCourseInfo window = new ShowCourseInfo();
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.ShowDialog();
         }
     }
 }

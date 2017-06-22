@@ -12,13 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// StuLogin.xaml 的交互逻辑
     /// </summary>
-    public partial class StuLogin : Window
+    public partial class StuLogin
     {
         public StuLogin()
         {
@@ -28,6 +29,7 @@ namespace HomeWork.Views
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             _ViewModel = new LoginViewModel();
+            App.IsStu = true;
             if (_ViewModel.Login(new Models.studentinfo()
             {
                 stu_id = UserName.Text,
@@ -35,7 +37,9 @@ namespace HomeWork.Views
             }))
             {
                 App.ID = UserName.Text;
-                new StuWindow().Show();
+                StuWindow window = new StuWindow();
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                window.Show();
                 this.Close();
             }
             else

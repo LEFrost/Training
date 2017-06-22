@@ -1,9 +1,10 @@
-﻿<Window x:Class="HomeWork.Views.StuAttenceInfo"
+﻿<controls:MetroWindow x:Class="HomeWork.Views.StuAttenceInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork.Views"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="StuAttenceInfo" Height="600" Width="650">
     <Grid>
@@ -15,4 +16,4 @@
         <Button Name="Back" Grid.Row="1" Content="返回上一菜单" Height="30" Width="80"
                 Margin="0,10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
-</Window>
+</controls:MetroWindow>

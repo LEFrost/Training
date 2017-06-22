@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace HomeWork.Views
 {
     /// <summary>
     /// StuAttenceInfo.xaml 的交互逻辑
     /// </summary>
-    public partial class StuAttenceInfo : Window
+    public partial class StuAttenceInfo
     {
         public StuAttenceInfo()
         {
