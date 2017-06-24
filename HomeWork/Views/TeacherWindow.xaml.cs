@@ -91,7 +91,6 @@ namespace HomeWork.Views
         {
             if (CourseId.Text != null)
             {
-
                 string id = CourseId.Text;
                 if (!ViewModel.FindRecord(id))
                     MessageBox.Show("没有关于这个课的信息", "信息");

@@ -28,7 +28,7 @@ namespace HomeWork.Views
         {
             get
             {
-                return _FindWayList??(_FindWayList=new ObservableCollection<string>());
+                return _FindWayList ?? (_FindWayList = new ObservableCollection<string>());
             }
             set
             {
@@ -45,12 +45,15 @@ namespace HomeWork.Views
             FindWayList.Add("按教学班查询");
             FindWayList.Add("按专业查询");
             FindWayList.Add("按学号查询");
-            
+
         }
 
         private void Find_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.FindStu((FindWay)FindWayComboBox.SelectedIndex, KeyInput.Text.Trim());
+            if (!ViewModel.FindStu((FindWay)FindWayComboBox.SelectedIndex, KeyInput.Text.Trim()))
+            {
+                MessageBox.Show("查询失败", "错误");
+            }
         }
 
         private void RestartFind_Click(object sender, RoutedEventArgs e)

@@ -21,6 +21,7 @@ namespace HomeWork.ViewModels
         }
         public bool FindStu(FindWay way, string key)
         {
+            ResultStuList.Clear();
             IQueryable<studentinfo> query = null;
             switch (way)
             {
@@ -57,6 +58,7 @@ namespace HomeWork.ViewModels
         }
         public bool ShowTeacher()
         {
+            ResultStuList.Clear();
             var query = from n in (from a in (from q in DBContext.selectcourse
                                               where q.stu_id == App.ID
                                               select new { classId = q.class_id })
